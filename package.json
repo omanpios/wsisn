@@ -1,0 +1,16 @@
+{
+  "description": "What anime should I see now?",
+  "name": "wsisn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --watch index.js"
+  },
+  "keywords": [
+    "anime",
+    "node",
+    "API"
+  ],
+  "author": "omanpios",
+  "license": "ISC"
+}
