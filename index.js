@@ -26,19 +26,16 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const request = req.body;
-  console.log(request);
   const sfw = request.sfw;
   const type = request.type;
   const min_score = Number(request.score);
   const status = request.status;
   const rating = request.rating;
-  console.log(`Score: ${min_score}`);
 
   try {
     const response = await axios.get(
       `${BASE_URL}/anime?sfw=${sfw}&type=${type}&status=${status}&rating=${rating}&min_score=${min_score}`
     );
-    console.log();
     const randomIndex = Math.floor(Math.random() * response.data.data.length);
     const result = response.data.data[randomIndex];
     res.render("index.ejs", {
