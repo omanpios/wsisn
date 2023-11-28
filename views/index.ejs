@@ -5,60 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What should I see now?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1>What should I see now?</h1>
-    <form action="/" id="form" class="form" method="POST">
-        <label for="sfw">SFW</label>
-        <select name="sfw" class="form-select" id="sfw">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-        <br>
-        <label for="type">Type</label>
-        <select name="type" class="form-select" id="type">
-            <option value="tv">Tv</option>
-            <option value="movie">Movie</option>
-            <option value="special">Special</option>
-            <option value="ona">ONA</option>
-            <option value="ova">OVA</option>
-            <option value="music">Music</option>
-        </select>
-        <br>
-        <label for="score">Score</label>
-        <input type="number" id="score" name="score" min="1" max="10" value="1">
-        <br>
-        <label for="status">Status</label>
-        <select name="status" class="form-select" id="status">
-            <option value="airing">Airing</option>
-            <option value="complete">Complete</option>
-            <option value="upcoming">Upcoming</option>
-        </select>
-        <br>
-        <label for="rating">Rating</label>
-        <select name="rating" class="form-select" id="rating">
-            <option value="g">G - All Ages</option>
-            <option value="pg">PG - Children</option>
-            <option value="pg13">PG-13 - Teens 13 or older</option>
-            <option value="r17">R - 17+ (violence & profanity)</option>
-            <option value="r">R+ - Mild Nudity</option>
-        </select>
-        <br>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
-    </form>
+<body class="d-flex h-100 text-center text-bg-dark">
+    <div class="container">
+        <h1>What should I see now?</h1>
+        <form action="/" id="form" class="form-label" method="POST">
+            <label for="sfw">SFW</label>
+            <select name="sfw" class="form-select" id="sfw">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
 
-    <h2>
-        <%= title %>
-    </h2>
-    <h2>
-        <%= title_japanese %>
-    </h2>
-    <img src="<%= image_url %>" alt="">
-    <p>
-        <%= synopsis %>
-    </p>
+            <label for="type">Type</label>
+            <select name="type" class="form-select" id="type">
+                <option value="tv">Tv</option>
+                <option value="movie">Movie</option>
+                <option value="special">Special</option>
+                <option value="ona">ONA</option>
+                <option value="ova">OVA</option>
+                <option value="music">Music</option>
+            </select>
+            <label for="score">Score</label>
+            <input type="range" id="score" name="score" min="1" max="10" value="5">
+            <label for="status">Status</label>
+            <select name="status" class="form-select" id="status">
+                <option value="airing">Airing</option>
+                <option value="complete">Complete</option>
+                <option value="upcoming">Upcoming</option>
+            </select>
+            <label for="rating">Rating</label>
+            <select name="rating" class="form-select" id="rating">
+                <option value="g">G - All Ages</option>
+                <option value="pg">PG - Children</option>
+                <option value="pg13">PG-13 - Teens 13 or older</option>
+                <option value="r17">R - 17+ (violence & profanity)</option>
+                <option value="r">R+ - Mild Nudity</option>
+                <option value="rx">Rx - Mild Nudity</option>
+            </select>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 row justify-content-center">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="bd-placeholder-img card-img-top img-thumbnail" src="<%= image_url %>" alt="">
+                            <div class="card-body">
+                                <h4>
+                                    <%= title %>
+                                </h4>
+                                <h4>
+                                    <%= title_japanese %>
+                                </h4>
+                                <p>
+                                    <%= synopsis %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
