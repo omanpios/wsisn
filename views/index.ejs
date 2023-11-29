@@ -13,38 +13,51 @@
     <div class="container">
         <h1>What should I see now?</h1>
         <form action="/" id="form" class="form-label" method="POST">
-            <label for="sfw">SFW</label>
-            <select name="sfw" class="form-select" id="sfw">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-
-            <label for="type">Type</label>
-            <select name="type" class="form-select" id="type">
-                <option value="tv">Tv</option>
-                <option value="movie">Movie</option>
-                <option value="special">Special</option>
-                <option value="ona">ONA</option>
-                <option value="ova">OVA</option>
-                <option value="music">Music</option>
-            </select>
-            <label for="score">Score</label>
-            <input type="range" id="score" name="score" min="1" max="10" value="5">
-            <label for="status">Status</label>
-            <select name="status" class="form-select" id="status">
-                <option value="airing">Airing</option>
-                <option value="complete">Complete</option>
-                <option value="upcoming">Upcoming</option>
-            </select>
-            <label for="rating">Rating</label>
-            <select name="rating" class="form-select" id="rating">
-                <option value="g">G - All Ages</option>
-                <option value="pg">PG - Children</option>
-                <option value="pg13">PG-13 - Teens 13 or older</option>
-                <option value="r17">R - 17+ (violence & profanity)</option>
-                <option value="r">R+ - Mild Nudity</option>
-                <option value="rx">Rx - Mild Nudity</option>
-            </select>
+            <div class="container">
+                <label for="sfw">SFW</label>
+                <select name="sfw" class="form-select" id="sfw">
+                    <option value="">SFW</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="container">
+                <label for="type">Type</label>
+                <select name="type" class="form-select" id="type">
+                    <option value="">Type</option>
+                    <option value="tv">Tv</option>
+                    <option value="movie">Movie</option>
+                    <option value="special">Special</option>
+                    <option value="ona">ONA</option>
+                    <option value="ova">OVA</option>
+                    <option value="music">Music</option>
+                </select>
+            </div>
+            <div class="container">
+                <label for="status">Status</label>
+                <select name="status" class="form-select" id="status">
+                    <option value="">Status</option>
+                    <option value="airing">Airing</option>
+                    <option value="complete">Complete</option>
+                    <option value="upcoming">Upcoming</option>
+                </select>
+            </div>
+            <div class="container">
+                <label for="rating">Rating</label>
+                <select name="rating" class="form-select" id="rating">
+                    <option value="">Rating</option>
+                    <option value="g">G - All Ages</option>
+                    <option value="pg">PG - Children</option>
+                    <option value="pg13">PG-13 - Teens 13 or older</option>
+                    <option value="r17">R - 17+ (violence & profanity)</option>
+                    <option value="r">R+ - Mild Nudity</option>
+                </select>
+            </div>
+            <br>
+            <div class="container">
+                <label for="score">Score</label>
+                <input type="range" id="score" name="score" min="1" max="10" value="">
+            </div>
             <input type="submit" value="Submit">
             <input type="reset" value="Reset">
         </form>
