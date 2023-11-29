@@ -40,8 +40,8 @@ app.post("/", async (req, res) => {
     ...(rating != "" && { rating: rating }),
   };
 
-  console.log(params);
   try {
+    const response = await axios.get(`${BASE_URL}/anime`, params);
     const randomIndex = Math.floor(Math.random() * response.data.data.length);
     const result = response.data.data[randomIndex];
     res.render("index.ejs", {
