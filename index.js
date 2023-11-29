@@ -26,7 +26,6 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const request = req.body;
-  console.log(request);
   const sfw = request.sfw;
   const type = request.type;
   const min_score = Number(request.score);
@@ -43,7 +42,6 @@ app.post("/", async (req, res) => {
 
   console.log(params);
   try {
-    const response = await axios.get(`${BASE_URL}/anime`, params);
     const randomIndex = Math.floor(Math.random() * response.data.data.length);
     const result = response.data.data[randomIndex];
     res.render("index.ejs", {
