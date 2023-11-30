@@ -50,7 +50,6 @@ app.post("/", async (req, res) => {
         animeList.splice(index, 1);
       }
 
-      console.log(newTitles);
       res.render("index.ejs", {
         animeList: newTitles,
       });
