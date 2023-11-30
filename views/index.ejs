@@ -71,29 +71,29 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 row justify-content-center">
 
                     <!-- Card -->
-                    <% for( let i=0; i < 3; i++ ) { %>
+                    <% animeList.forEach(anime=> { %>
                         <div class="col">
 
                             <div class="card shadow-sm" style="width: 18rem;">
-                                <img class="bd-placeholder-img card-img-top img-thumbnail" src="<%= image_url %>"
-                                    alt="">
+                                <img class="bd-placeholder-img card-img-top img-thumbnail"
+                                    src="<%= anime.images.webp.image_url %>" alt="">
                                 <div class="card-body">
                                     <h4>
-                                        <%= title %>
+                                        <%= anime.title %>
                                     </h4>
                                     <h4>
-                                        <%= title_japanese %>
+                                        <%= anime.title_japanese %>
                                     </h4>
                                     <p>
-                                        <%= synopsis %>
+                                        <%= anime.synopsis %>
                                     </p>
                                     <small>
-                                        <%= score %>
+                                        <%= anime.score %>
                                     </small>
                                 </div>
                             </div>
                         </div>
-                        <% } %>
+                        <% }) %>
                 </div>
             </div>
         </div>
