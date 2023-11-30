@@ -9,6 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <!-- Title -->
+
 <body class="d-flex h-100 text-center text-bg-dark">
     <div class="container">
         <h1>What should I see now?</h1>
@@ -68,28 +69,31 @@
         <div class="album py-5 bg-body-tertiary">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 row justify-content-center">
-                    <div class="col">
 
-                        <!-- Card -->
-                        <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top img-thumbnail" src="<%= image_url %>" alt="">
-                            <div class="card-body">
-                                <h4>
-                                    <%= title %>
-                                </h4>
-                                <h4>
-                                    <%= title_japanese %>
-                                </h4>
-                                <p>
-                                    <%= synopsis %>
-                                </p>
-                                <small>
-                                    <%= score %>
-                                </small>
+                    <!-- Card -->
+                    <% for( let i=0; i < 3; i++ ) { %>
+                        <div class="col">
+
+                            <div class="card shadow-sm" style="width: 18rem;">
+                                <img class="bd-placeholder-img card-img-top img-thumbnail" src="<%= image_url %>"
+                                    alt="">
+                                <div class="card-body">
+                                    <h4>
+                                        <%= title %>
+                                    </h4>
+                                    <h4>
+                                        <%= title_japanese %>
+                                    </h4>
+                                    <p>
+                                        <%= synopsis %>
+                                    </p>
+                                    <small>
+                                        <%= score %>
+                                    </small>
+                                </div>
                             </div>
                         </div>
-                        
-                    </div>
+                        <% } %>
                 </div>
             </div>
         </div>
