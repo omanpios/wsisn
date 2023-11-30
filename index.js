@@ -17,6 +17,7 @@ app.get("/", async (req, res) => {
       title_japanese: result.title_japanese,
       synopsis: result.synopsis,
       image_url: result.images.jpg.image_url,
+      score: result.score,
     });
   } catch (error) {
     console.log(error);
@@ -41,7 +42,7 @@ app.post("/", async (req, res) => {
   };
 
   try {
-    const response = await axios.get(`${BASE_URL}/anime`, params);
+ const response = await axios.get(`${BASE_URL}/anime`, { params });
     const randomIndex = Math.floor(Math.random() * response.data.data.length);
     const result = response.data.data[randomIndex];
     res.render("index.ejs", {
@@ -49,6 +50,7 @@ app.post("/", async (req, res) => {
       title_japanese: result.title_japanese,
       synopsis: result.synopsis,
       image_url: result.images.jpg.image_url,
+      score: result.score,
     });
   } catch (error) {
     console.log(error);
@@ -57,6 +59,7 @@ app.post("/", async (req, res) => {
       title_japanese: "result.title_japanese",
       synopsis: "result.synopsis",
       image_url: "result.images.jpg.image_url",
+      score: "score",
     });
   }
 });
