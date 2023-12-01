@@ -71,29 +71,50 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 row justify-content-center">
 
                     <!-- Card -->
-                    <% animeList.forEach(anime=> { %>
-                        <div class="col">
+                    <% if (animeList.length> 0) { %>
+                        <% animeList.forEach(anime=> { %>
+                            <div class="col">
 
-                            <div class="card shadow-sm" style="width: 18rem;">
-                                <img class="bd-placeholder-img card-img-top img-thumbnail"
-                                    src="<%= anime.images.webp.image_url %>" alt="">
-                                <div class="card-body">
-                                    <h4>
-                                        <%= anime.title %>
-                                    </h4>
-                                    <h4>
-                                        <%= anime.title_japanese %>
-                                    </h4>
-                                    <p>
-                                        <%= anime.synopsis %>
-                                    </p>
-                                    <small>
-                                        <%= anime.score %>
-                                    </small>
+                                <div class="card shadow-sm" style="width: 18rem;">
+                                    <img class="bd-placeholder-img card-img-top img-thumbnail"
+                                        src="<%= anime.images.webp.image_url %>" alt="">
+                                    <div class="card-body">
+                                        <h4>
+                                            <%= anime.title %>
+                                        </h4>
+                                        <h4>
+                                            <%= anime.title_japanese %>
+                                        </h4>
+                                        <p>
+                                            <%= anime.synopsis %>
+                                        </p>
+                                        <small>
+                                            <%= anime.score %>
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% }) %>
+                            <% })} else {%>
+                                <div class="col">
+
+                                    <div class="card shadow-sm" style="width: 18rem;">
+                                        <img class="bd-placeholder-img card-img-top img-thumbnail"
+                                            src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=996&t=st=1701376098~exp=1701376698~hmac=2b2d0cb5f386f9f21ffb9235cb6e1f2cd198cbbec8cde341abda1207fb04cecc"
+                                            alt="">
+                                        <div class="card-body">
+                                            <h4>
+                                                Try again!
+                                            </h4>
+                                            <h4>
+                                                もう一度やり直してください
+                                            </h4>
+                                            <p>
+                                                No animes found, try new criteria"
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }%>
                 </div>
             </div>
         </div>
