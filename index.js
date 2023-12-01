@@ -44,12 +44,14 @@ app.post("/", async (req, res) => {
     const animeList = response.data.data;
     if (animeList.length > 0) {
       var newTitles = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < animeList.length; i++) {
+        if (i == 3) {
+          break;
+        }
         var index = Math.floor(Math.random() * animeList.length);
         newTitles.push(animeList[index]);
         animeList.splice(index, 1);
       }
-
       res.render("index.ejs", {
         animeList: newTitles,
       });
@@ -59,7 +61,12 @@ app.post("/", async (req, res) => {
           title: "Try again!",
           title_japanese: "もう一度やり直してください",
           synopsis: "No animes found, try new criteria",
-          images: { webp: { image_url: "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=996&t=st=1701376098~exp=1701376698~hmac=2b2d0cb5f386f9f21ffb9235cb6e1f2cd198cbbec8cde341abda1207fb04cecc" } },
+          images: {
+            webp: {
+              image_url:
+                "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=996&t=st=1701376098~exp=1701376698~hmac=2b2d0cb5f386f9f21ffb9235cb6e1f2cd198cbbec8cde341abda1207fb04cecc",
+            },
+          },
           score: "",
         },
       ];
