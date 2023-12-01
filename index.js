@@ -11,19 +11,33 @@ app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get(`${BASE_URL}/random/anime`);
-    const result = response.data.data;
-    const newTitles = [result];
+    const randomAnime = await getRandomAnime(`${BASE_URL}/random/anime`);
     res.render("index.ejs", {
-      animeList: newTitles,
+      animeList: randomAnime,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500);
+    handleError(error)
   }
 });
 
 app.post("/", async (req, res) => {
+  const params = getParamsFromRequest(req);
+  try {
+    const animeList = await getAnimeList(`${BASE_URL}/anime`, params);
+    const pickedAnimes = pickThreeRandomAnimesFromList(animeList);
+    res.render("index.ejs", {
+      animeList: pickedAnimes,
+    });
+  } catch (error) {
+    handleError(error)
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port: ${port} - ${new Date()}`);
+});
+
+function getParamsFromRequest(req) {
   const request = req.body;
   const sfw = request.sfw;
   const type = request.type;
@@ -38,47 +52,37 @@ app.post("/", async (req, res) => {
     ...(status != "" && { status: status }),
     ...(rating != "" && { rating: rating }),
   };
+  return params;
+}
 
-  try {
-    const response = await axios.get(`${BASE_URL}/anime`, { params });
-    const animeList = response.data.data;
-    if (animeList.length > 0) {
-      var newTitles = [];
-      for (let i = 0; i < animeList.length; i++) {
-        if (i == 3) {
-          break;
-        }
-        var index = Math.floor(Math.random() * animeList.length);
-        newTitles.push(animeList[index]);
-        animeList.splice(index, 1);
+async function getAnimeList(url, params) {
+  const response = await axios.get(url, { params });
+  const animeList = response.data.data;
+  return animeList;
+}
+
+async function getRandomAnime(url) {
+  const response = await axios.get(url);
+  const randomAnime = [response.data.data];
+  return randomAnime;
+}
+
+function pickThreeRandomAnimesFromList(animeList) {
+  var selectedAnimes = [];
+  if (animeList.length > 0) {
+    for (let i = 0; i < animeList.length; i++) {
+      if (i == 3) {
+        break;
       }
-      res.render("index.ejs", {
-        animeList: newTitles,
-      });
-    } else {
-      const error = [
-        {
-          title: "Try again!",
-          title_japanese: "もう一度やり直してください",
-          synopsis: "No animes found, try new criteria",
-          images: {
-            webp: {
-              image_url:
-                "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=996&t=st=1701376098~exp=1701376698~hmac=2b2d0cb5f386f9f21ffb9235cb6e1f2cd198cbbec8cde341abda1207fb04cecc",
-            },
-          },
-          score: "",
-        },
-      ];
-      res.render("index.ejs", {
-        animeList: error,
-      });
+      var index = Math.floor(Math.random() * animeList.length);
+      selectedAnimes.push(animeList[index]);
+      animeList.splice(index, 1);
     }
-  } catch (error) {
-    console.log(error);
-    res.status(500);
   }
-});
-app.listen(port, () => {
-  console.log(`Server running on port: ${port} - ${new Date()}`);
-});
+  return selectedAnimes;
+}
+
+function handleError(error) {
+  console.log(error);
+  res.status(500);
+}
