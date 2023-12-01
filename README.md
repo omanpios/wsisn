@@ -29,9 +29,18 @@ To get started, follow these steps:
 ## Usage
 1. Start the server:
    ```bash
-    npm run test
+    npm run start
 
 2. Open your browser and go to http://localhost:3000/ to access "What should I see next?".
+
+## Testing
+1. Start the server:
+   ```bash
+    npm install
+
+2. Run Cypress
+   ```bash
+    npm run cy:run
 
 ## Credits
 
